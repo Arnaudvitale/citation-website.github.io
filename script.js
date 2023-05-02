@@ -9,9 +9,48 @@ const citations = [
     "La peur est le chemin vers le côté obscur : la peur mène à la colère, la colère mène à la haine, la haine... mène à la souffrance. - Star Wars, La Menace fantôme",
     "Le hasard, c'est Dieu qui se promène incognito. - Imitation Game",
     "Garder ses rêves, c'est ce qu'il y a de plus beau. - La Cité de la peur",
-    "quoicoubeh",
-    "les deux en même temps. -Fabien"
+    "Je reviendrai. - Terminator",
+    "Que la Force soit avec toi. - Star Wars",
+    "Tu vois, le monde se divise en deux catégories : ceux qui ont un pistolet chargé et ceux qui creusent. Toi, tu creuses. - Le bon, la brute et le truand",
+    "Il y a deux sortes d'hommes : ceux qui ont un pistolet chargé, et ceux qui creusent. Toi, tu creuses. - Il était une fois dans l'Ouest",
+    "La vie, c'est comme une boîte de chocolats, on ne sait jamais sur quoi on va tomber. - Forrest Gump",
+    "J'ai toujours détesté les gens qui ne m'ont pas respecté. - Le parrain",
+    "Je suis le roi du monde ! - Titanic",
+    "T'es un magicien Harry. - Harry Potter à l'école des sorciers",
+    "Il faut que tu te lèves, que tu te fasses beau et que tu te dises que tu es un bon à rien. Parce que sinon tu n'es rien. - Le fabuleux destin d'Amélie Poulain",
+    "Je suis ton père. - Star Wars : Épisode V - L'Empire contre-attaque",
+    "La vérité, tu ne peux pas la supporter ! - A few good men",
+    "C'est un oiseau ? C'est un avion ? Non, c'est Superman ! - Superman",
+    "Hakuna Matata. - Le Roi Lion",
+    "Je t'aime. - Le parrain",
+    "Au revoir, Monsieur le Président. - Independence Day",
+    "J'ai fait un rêve bizarre, j'ai rêvé que je mangeais un gros marshmallow, mais quand je me suis réveillé, mon oreiller avait disparu. - Ghostbusters",
+    "Tu ne peux pas combattre ici ! C'est la salle de guerre ! - Docteur Folamour",
+    "La liberté, c'est de pouvoir choisir la personne qu'on aime. - Moulin Rouge !",
+    "Nous serons éternellement reconnaissants. - Harry Potter et la Chambre des Secrets",
+    "Fais-le, ou ne le fais pas. Il n'y a pas d'essai. - Star Wars : Épisode V - L'Empire contre-attaque",
+    "C'est le commencement d'une belle amitié. - Casablanca",
+    "La vie trouve toujours un chemin. - Jurassic Park",
+    "Je m'appelle Inigo Montoya. Tu as tué mon père. Prépare-toi à mourir. - Princess Bride",
+    "On est fait l'un pour l'autre, comme deux poissons dans l'eau. - Là-haut",
+    "Je suis Groot. - Les Gardiens de la Galaxie",
+    "C'est pas faux. - Kaamelott",
+    "Hasta la vista, baby. - Terminator 2 : Le Jugement dernier",
+    "Je suis le roi du monde ! - Titanic",
+    "C'est moi qui ai tué le Loup-Garou de Londres. - Le Loup-Garou de Londres",
+    "Tu veux jouer ? Viens jouer avec moi. - Shining"
 ];
+
+async function genererCitation() {
+    try {
+        const response = await fetch('https://famous-quotes-api.herokuapp.com/api/v1/random?limit=1&category=movies');
+        const data = await response.json();
+        const citation = data[0].quote;
+        animerTexte(citation);
+    } catch (error) {
+        console.error('Erreur lors de la récupération de la citation:', error);
+    }
+}
 
 document.getElementById('generer').addEventListener('click', function() {
     const citationAleatoire = citations[Math.floor(Math.random() * citations.length)];
