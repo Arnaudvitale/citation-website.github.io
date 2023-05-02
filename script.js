@@ -41,17 +41,6 @@ const citations = [
     "Tu veux jouer ? Viens jouer avec moi. - Shining"
 ];
 
-async function genererCitation() {
-    try {
-        const response = await fetch('https://famous-quotes-api.herokuapp.com/api/v1/random?limit=1&category=movies');
-        const data = await response.json();
-        const citation = data[0].quote;
-        animerTexte(citation);
-    } catch (error) {
-        console.error('Erreur lors de la récupération de la citation:', error);
-    }
-}
-
 document.getElementById('generer').addEventListener('click', function() {
     const citationAleatoire = citations[Math.floor(Math.random() * citations.length)];
     animerTexte(citationAleatoire);
