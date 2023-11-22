@@ -38,7 +38,8 @@ const citations = [
     "Hasta la vista, baby. - Terminator 2 : Le Jugement dernier",
     "Je suis le roi du monde ! - Titanic",
     "C'est moi qui ai tué le Loup-Garou de Londres. - Le Loup-Garou de Londres",
-    "Tu veux jouer ? Viens jouer avec moi. - Shining"
+    "Tu veux jouer ? Viens jouer avec moi. - Shining",
+    "Je suis destiné à de grandes choses. - Loki"
 ];
 
 document.getElementById('generer').addEventListener('click', function() {
